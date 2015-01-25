@@ -30,12 +30,15 @@ get <- function() x
 ## to setinverse value to be cached.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  ## Asign to m the value of the cached matrix
   m <- x$getinverse()
+## if m is different from null then inverse has already been calculated
+## it prints the message and return th value of m that is stored in parent environment
   if(!is.null(m)){
     message("getting cached inverse matrix")
     return(m)
   }
+## if is null then inverse need to be calculated
   data <- x$get()
   m <- solve(data, ...)
   x$setinverse(m)
